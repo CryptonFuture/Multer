@@ -1,9 +1,12 @@
-const express = require('express')
 const multer = require('multer')
+const express = require('express')
+
+const port = process.env.PORT || 4000
+
+const app = express()
 
 const upload = multer({dest: 'uploads/'}).single("demo_image")
 
-const app = express()
 
 app.get('/', (req, res) => {
     res.send("Server is working")
@@ -18,6 +21,6 @@ app.post("/image", (req, res) => {
     })
 })
 
-app.listen(process.env.PORT, () => {
-    console.log('Server is localhost on Port ' + process.env.PORT)
+app.listen(port, () => {
+    console.log(`Server is localhost on Port ${port}`)
 })
